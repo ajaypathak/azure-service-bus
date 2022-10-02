@@ -14,11 +14,9 @@ namespace ServiceBus.Helper
 
         public ServiceBusBaseClass()
         {
-            SenderConnectionString = "Endpoint=sb://ajaydemo.servicebus.windows.net/;SharedAccessKeyName=Sender;" +
-                "SharedAccessKey=PWSfqny83QpriBLn/om7V0Go0qgpZdgr92lcc2QYWyg=";
-            ListenConnectionString = "Endpoint=sb://ajaydemo.servicebus.windows.net/;SharedAccessKeyName=Listen;" +
-                "SharedAccessKey=FqsVHRAVjYFisuO+4mlDWsAsuMR6sr2HnI4gjccK1lk=";
-            QueueName = "SenderReceiver";
+            SenderConnectionString = "";
+            ListenConnectionString = "";
+            QueueName = "";
         }
         public virtual string MessageId()
         {

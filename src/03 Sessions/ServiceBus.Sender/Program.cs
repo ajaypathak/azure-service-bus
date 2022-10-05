@@ -5,4 +5,5 @@ string connectionString = "Endpoint=sb://ajaydemo.servicebus.windows.net/;Shared
 string queueName = "sessionqueue";
 Sender sender= new Sender(connectionString,queueName);
 
-await sender.SendTextMessage("Hello World");
+await sender.SendTextMessage("Message");
+Console.ReadLine();

@@ -8,7 +8,13 @@ namespace ServiceBus.Helper
 
         public Receiver(string connectionString, string queueName) : base(connectionString)
         {
-            ServiceBusSessionProcessorOptions options = new ServiceBusSessionProcessorOptions();
+            ServiceBusSessionProcessorOptions options = new ServiceBusSessionProcessorOptions
+            {
+                AutoCompleteMessages = false,
+                MaxAutoLockRenewalDuration = TimeSpan.FromMilliseconds(100),
+                MaxConcurrentSessions = 2,
+                MaxConcurrentCallsPerSession = 2
+            };
 
             processor = ServiceBusClient.CreateSessionProcessor(queueName, options);
             //serviceBusReceiver   = new ServiceBusClientBuilder()
@@ -37,8 +43,7 @@ namespace ServiceBus.Helper
 
         private async Task Processor_ProcessMessageAsync(ProcessSessionMessageEventArgs args)
         {
-            string body = args.Message.Body.ToString();
-            var data = body.Split(Delimiter);
+            string body = args.Message.Body.ToString();        
             Console.WriteLine($"Received: Body {body}, SessionId {args.Message.SessionId}");
             await args.CompleteMessageAsync(args.Message);
         }

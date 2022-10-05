@@ -1,5 +1,7 @@
 ﻿using Azure.Messaging.ServiceBus;
 
+using System.Diagnostics;
+
 namespace ServiceBus.Helper
 {
     public class Sender : ServiceBusBaseClass
@@ -19,10 +21,14 @@ namespace ServiceBus.Helper
             {
                 int number = rnd.Next(1, 220000);
                 int v = number % 22;
-                string body = text + Delimiter + i + Delimiter + v;
-                var message = new ServiceBusMessage(body);
-             
-                message.SessionId = v.ToString();
+                string body = text + Delimiter +
+                    " Process Id : " + Process.GetCurrentProcess().Id + Delimiter +
+                    " TimeStamp " + DateTime.Now.ToString("yyyy-mm-dd-HH-m-ss-ff") + Delimiter +
+                    " Session Id : " + v;
+                var message = new ServiceBusMessage(body)
+                {
+                    SessionId = v.ToString()
+                };
                 await serviceBusSender.SendMessageAsync(message);
                 Console.WriteLine($"Message {body}  published to the queue.");
 

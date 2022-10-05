@@ -17,7 +17,6 @@ namespace ServiceBus.Helper
             };
 
             processor = ServiceBusClient.CreateSessionProcessor(queueName, options);
-            //serviceBusReceiver   = new ServiceBusClientBuilder()
         }
         public async Task ReceiveTextMessage()
         {

@@ -7,6 +7,7 @@ namespace ServiceBus.Helper
 
         public readonly string QueueName;
         public readonly ServiceBusClient ServiceBusClient;
+        protected string Delimiter = "-";
 
         public ServiceBusBaseClass(string connectionString)
         {

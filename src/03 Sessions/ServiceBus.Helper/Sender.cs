@@ -17,9 +17,9 @@ namespace ServiceBus.Helper
             Random rnd = new Random();
             for (int i = 0; i < 100; i++)
             {
-                int number = rnd.Next(1, 1000);
-                int v = number % 5;
-                string body = text + " " + number + " " + v;
+                int number = rnd.Next(1, 220000);
+                int v = number % 22;
+                string body = text + Delimiter + i + Delimiter + v;
                 var message = new ServiceBusMessage(body);
              
                 message.SessionId = v.ToString();

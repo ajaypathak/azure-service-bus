@@ -38,7 +38,8 @@ namespace ServiceBus.Helper
         private async Task Processor_ProcessMessageAsync(ProcessSessionMessageEventArgs args)
         {
             string body = args.Message.Body.ToString();
-            Console.WriteLine($"Received: {body}");
+            var data = body.Split(Delimiter);
+            Console.WriteLine($"Received: Body {body}, SessionId {args.Message.SessionId}");
             await args.CompleteMessageAsync(args.Message);
         }
 

@@ -1,25 +1,35 @@
-﻿using Microsoft.Azure.ServiceBus;
+﻿using Azure.Messaging.ServiceBus;
 
-using System.Text;
+using System.Diagnostics;
 
 namespace ServiceBus.Helper
 {
     public class Sender : ServiceBusBaseClass
     {
+        public readonly ServiceBusSender serviceBusSender;
 
-        public Sender()
+        public Sender(string connectionString, string queueName) : base(connectionString)
         {
-            _serviceBusClient = new QueueClient(SenderConnectionString, QueueName);
-
+            serviceBusSender = ServiceBusClient.CreateSender(queueName);
 
         }
+
         public async Task SendTextMessage(string text)
         {
-            var message = new Message(Encoding.UTF8.GetBytes(text));
-            await _serviceBusClient.SendAsync(message);
+            for (int i = 0; i < 100; i++)
+            {
+
+                string body = text + i + Delimiter +
+                    " Process Id : " + Process.GetCurrentProcess().Id + Delimiter +
+                    " TimeStamp " + DateTime.Now.ToString("yyyy-mm-dd-HH-m-ss-ff") + Delimiter;
+                var message = new ServiceBusMessage(body);
+
+                await serviceBusSender.SendMessageAsync(message);
+                Console.WriteLine($"Message {body}  published to the queue.");
+
+            }
+
 
         }
-
-
     }
 }

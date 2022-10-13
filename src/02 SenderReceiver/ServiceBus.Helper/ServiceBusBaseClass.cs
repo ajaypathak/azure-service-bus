@@ -1,22 +1,16 @@
-﻿
-
-using Microsoft.Azure.ServiceBus;
+﻿using Azure.Messaging.ServiceBus;
 
 namespace ServiceBus.Helper
 {
     public abstract class ServiceBusBaseClass
     {
-        public readonly string SenderConnectionString;
-        public readonly string ListenConnectionString;
-
         public readonly string QueueName;
-        protected QueueClient _serviceBusClient;
+        public readonly ServiceBusClient ServiceBusClient;
+        protected string Delimiter = "-";
 
-        public ServiceBusBaseClass()
+        public ServiceBusBaseClass(string connectionString)
         {
-            SenderConnectionString = "";
-            ListenConnectionString = "";
-            QueueName = "";
+            ServiceBusClient = new ServiceBusClient(connectionString);
         }
         public virtual string MessageId()
         {

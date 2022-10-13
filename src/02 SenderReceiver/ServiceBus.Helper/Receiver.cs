@@ -1,49 +1,49 @@
-﻿using Microsoft.Azure.ServiceBus;
-
-using System.Collections;
-using System.Text;
+﻿using Azure.Messaging.ServiceBus;
 
 namespace ServiceBus.Helper
 {
     public class Receiver : ServiceBusBaseClass
     {
+        private readonly ServiceBusProcessor serviceBusProcessor;
 
-        public Receiver()
+        public Receiver(string connectionString, string queueName) : base(connectionString)
         {
-            _serviceBusClient = new QueueClient(ListenConnectionString, QueueName);
-
-
+            serviceBusProcessor = ServiceBusClient.CreateProcessor(queueName);
         }
         public async Task ReceiveTextMessage()
         {
-            var options = new MessageHandlerOptions(ErrorHandler)
-            {
-                AutoComplete = false,
-                MaxConcurrentCalls = 10,
-                MaxAutoRenewDuration = TimeSpan.FromSeconds(30)
-            };
+            serviceBusProcessor.ProcessMessageAsync += ServiceBusProcessor_ProcessMessageAsync;
+            serviceBusProcessor.ProcessErrorAsync += ServiceBusProcessor_ProcessErrorAsync;
 
-            
+            // start processing 
+            await serviceBusProcessor.StartProcessingAsync();
 
-            _serviceBusClient.RegisterMessageHandler(handleMessage, options);
+            Console.WriteLine("Wait for a minute and then press any key to end the processing");
+            Console.ReadKey();
 
-
+            // stop processing 
+            Console.WriteLine("\nStopping the receiver...");
+            await serviceBusProcessor.StopProcessingAsync();
+            Console.WriteLine("Stopped receiving messages");
 
             Console.ReadLine();
         }
 
-        private async Task handleMessage(Message message, CancellationToken cancellationToken)
+        private Task ServiceBusProcessor_ProcessErrorAsync(ProcessErrorEventArgs arg)
         {
-            string result = System.Text.Encoding.UTF8.GetString(message.Body);
+            Console.WriteLine(arg.Exception.ToString());
+            return Task.CompletedTask;
+        }
+
+        private async Task ServiceBusProcessor_ProcessMessageAsync(ProcessMessageEventArgs arg)
+        {
+            string result = System.Text.Encoding.UTF8.GetString(arg.Message.Body);
             WriteLine(result, ConsoleColor.DarkCyan);
 
-            await _serviceBusClient.CompleteAsync(message.SystemProperties.LockToken);
+            await arg.CompleteMessageAsync(arg.Message);
         }
 
-        private async Task ErrorHandler(ExceptionReceivedEventArgs arg)
-        {
-            await Task.CompletedTask;
-        }
+
 
 
     }

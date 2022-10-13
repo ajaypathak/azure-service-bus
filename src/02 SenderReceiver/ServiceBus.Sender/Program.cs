@@ -4,5 +4,5 @@ using ServiceBus.Helper;
 
 Sender sender = new Sender(AzureAccountDetails.connectionString, AzureAccountDetails.queueName);
 
-await sender.SendTextMessage("Message");
+await sender.SendTextMessageAsBatchAsync("Message");
 Console.ReadLine();

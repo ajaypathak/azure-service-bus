@@ -14,7 +14,7 @@ namespace ServiceBus.Config
             .AddJsonFile("appsettings.json")
             .AddUserSecrets<AzureAccountDetails>()
             .Build();
-
+            
 
 
              ConnectionString = config["connectionString"];

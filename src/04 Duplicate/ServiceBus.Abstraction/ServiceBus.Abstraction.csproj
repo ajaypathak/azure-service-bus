@@ -1,14 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.11.0" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ServiceBus.Model\ServiceBus.Model.csproj" />

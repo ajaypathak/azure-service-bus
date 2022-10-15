@@ -1,5 +1,7 @@
 ﻿using Azure.Messaging.ServiceBus;
 
+using ServiceBus.Model;
+
 using System.Text.Json;
 
 namespace ServiceBus.Helper

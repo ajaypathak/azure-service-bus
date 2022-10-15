@@ -1,0 +1,77 @@
+[
+  {
+    "ProductName": "Head First Design Patterns: Building Extensible and Maintainable Object-Oriented Software, Second Edition (Grayscale Indian Edition)",
+    "Price": 1625,
+    "Id": "1c1b52ff-1a65-493c-a486-4f86de249876"
+  },
+  {
+    "ProductName": "Design Patterns: Elements of Reusable Object-Oriented Software",
+    "Price": 653,
+    "Id": "710cc13a-48ec-49fb-affd-6b344081eeba"
+  },
+  {
+    "ProductName": "Design Patterns",
+    "Price": 691,
+    "Id": "2ec29687-11f1-4c28-af18-97c6249e512e"
+  },
+  {
+    "ProductName": "Design Patterns for Cloud Native Applications: Patterns in Practice Using APIs, Data, Events, and Streams (Grayscale Indian Edition)",
+    "Price": 1200,
+    "Id": "2cd01c14-4e8b-45e5-93e7-74e7045f5a73"
+  },
+  {
+    "ProductName": "New Composite Mathematics Class 3",
+    "Price": 374,
+    "Id": "f63e858a-79a4-4172-a110-9434ac40757f"
+  },
+  {
+    "ProductName": "Rachnatmak Vyakaran | Hindi Grammar Book for Class 1 | Second Edition | By Pearson",
+    "Price": 205,
+    "Id": "a42099d4-cfca-4855-a543-6c949502cf31"
+  },
+  {
+    "ProductName": "Rachnatmak Vyakaran | Hindi Grammar Book for Class 2 | Second Edition | By Pearson",
+    "Price": 218,
+    "Id": "6b2cff2a-7f73-4011-ad9f-f74476c522f9"
+  },
+  {
+    "ProductName": "Rachnatmak Vyakaran | Hindi Grammar Book for Class 3 | Second Edition | By Pearson",
+    "Price": 257,
+    "Id": "d35f78bd-9153-4433-af26-e1ed06d1ddb7"
+  },
+  {
+    "ProductName": "Rachnatmak Vyakaran | Hindi Grammar Book for Class 4 | Second Edition | By Pearson",
+    "Price": 278,
+    "Id": "7a07f3a5-688c-4d92-8b06-df9b5c3c673b"
+  },
+  {
+    "ProductName": "Number Line (Maths) | ICSE Class Third | Revised First Edition as per latest CISCE curriculum | By Pearson",
+    "Price": 307,
+    "Id": "0660cad4-21ca-415d-b557-6dcbf72710fc"
+  },
+  {
+    "ProductName": "CISCE Universal Science | For ICSE Class 3",
+    "Price": 385,
+    "Id": "63720235-9697-4cb0-9d12-b528357ebe02"
+  },
+  {
+    "ProductName": "My Watchtower: Social Studies | ICSE Class Third | First Edition | By Pearson",
+    "Price": 276,
+    "Id": "af47749a-eb6f-42e9-9707-cb86352bbba4"
+  },
+  {
+    "ProductName": "New Aster Advanced | English Coursebook| ICSE | Class 3",
+    "Price": 300,
+    "Id": "a0a2acf0-1d2d-443a-afcd-9c7aede8e3dc"
+  },
+  {
+    "ProductName": "English Grammar \u0026 composition for Class 3 |Climb with Cornerstone",
+    "Price": 230,
+    "Id": "75056cbe-1bb1-49bc-88a2-1f8731236384"
+  },
+  {
+    "ProductName": "MTG Science (NSO) Olympiad Previous Years Papers with Mock Test Paper - Class 3",
+    "Price": 243,
+    "Id": "36e01ecb-2829-46c6-945d-f6e6d60210fc"
+  }
+]

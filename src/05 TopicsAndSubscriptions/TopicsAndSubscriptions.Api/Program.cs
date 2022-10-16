@@ -1,3 +1,5 @@
+using Serilog;
+
 using TopicsAndSubscriptions.Abstraction;
 using TopicsAndSubscriptions.Services;
 
@@ -11,6 +13,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IProductProvider, ProductService>();
 builder.Services.AddTransient<IIndianStateProvider, IndianStateService>();
+var log = new LoggerConfiguration()
+    .WriteTo.File("log-{Date}.txt")
+    .CreateLogger();
+Log.Logger = log;
+
+Log.Information("This will be written to the rolling file set");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

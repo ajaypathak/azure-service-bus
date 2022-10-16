@@ -68,9 +68,20 @@ namespace TopicsAndSubscriptions.Helper
                 {
                     await client.DeleteSubscriptionAsync(topicName, subscriptionOptions.SubscriptionName);
                 }
-                CreateRuleOptions createRuleOptions = new CreateRuleOptions();
-                createRuleOptions.Name = item.StateCode + "-Rule";
-                createRuleOptions.Filter = new SqlRuleFilter($"State='{item.StateCode}'");
+                CreateRuleOptions createRuleOptions;
+                createRuleOptions = new CreateRuleOptions
+                {
+                    Name = item.StateCode + "-Rule",
+                    Filter = new SqlRuleFilter($"State='{item.StateCode}'")
+                };
+                //Increase the price by 20% if State =MH
+
+                if (item.StateCode == "MH")
+                {
+                    createRuleOptions.Action = new SqlRuleAction("SET TotalPrice=TotalPrice+TotalPrice*.20");
+                }
+
+
 
                 createdSubscription = await client.CreateSubscriptionAsync(subscriptionOptions, createRuleOptions);
                 subscriptions.Add(createdSubscription);

@@ -55,8 +55,22 @@ namespace TopicsAndSubscriptions.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<bool>> PublishMessageAsyns([FromBody] Order order, string topicName = "ajaytopic")
         {
+            if (order==null )
+            {
+                return BadRequest("Value of Order is null");
+            }
+            if (order.Products == null || order?.Products.Any() == false)
+            {
+                return BadRequest("Value of  Products is null");
+            }
+            if (order.Products.Any() == false)
+            {
+                return BadRequest("Value of  Products is empty");
+            }
+
             var connectionString = _configuration["topicConnectionString"];
             var topicManager = new TopicSender(topicName, connectionString);
+            order.TotalPrice = order.Products.Sum(x => x.Price);
             await topicManager.SendMessageAsync(order);
             return true;
         }

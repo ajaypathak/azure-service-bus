@@ -10,6 +10,8 @@ namespace TopicsAndSubscriptions.Model
     {
         public List<Product> Products { get; set; }
         public string State { get; set; }
+
+        public decimal TotalPrice { get; set; }
         public Order()
         {
             Products = new List<Product>();
